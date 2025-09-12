@@ -49,14 +49,15 @@ body {
   white-space: nowrap;
 }
 
-.left div{
+.left a{
   cursor: pointer;
   padding: 0 25px;
   font-size: 16px;
   font-weight: bold;
+  border-bottom: 0px none rgb(0, 0, 0);
 }
 
-.left div:hover{
+.left a:hover{
   background-color: grey;
 }
 
@@ -181,4 +182,78 @@ body {
 
 .bottom-sub span:hover{
   background-color: grey;
+}
+
+/* Styles for main search bar */
+
+.header-nav{
+  position: relative;
+}
+
+.main-search{
+ position: absolute;
+ visibility: hidden;
+ top: 30px;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: black;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.main-search-container{
+ display: flex;
+ flex: 1;
+ align-items: center;
+ justify-content: center;
+}
+
+.close-button{
+  border: 0;
+  background-color: black;
+  cursor: pointer;
+}
+
+.close-button img{
+  width: 27px;
+}
+
+.main-search-bar{
+ display: flex;
+ flex: 1;
+ max-width: 550px;
+ height: 38px;
+ border: none;
+ padding: 7px 0 7px 10px;
+ border-top-left-radius: 1px;
+ border-bottom-left-radius: 1px;
+}
+
+.main-search-bar:focus{
+  outline: none;
+}
+
+.main-search-bar::placeholder{
+  font-size: 16.5px;
+  color: rgb(190, 186, 186);
+}
+
+.search-button{
+ border: none;
+ background-color: grey;
+ padding: 4px 9px;
+ border-top-right-radius: 3px;
+ border-bottom-right-radius: 3px;
+ cursor: pointer;
+}
+
+.search-button:hover{
+  background-color: rgb(182, 178, 178);
+  transition: ease-in 10ms;
+}
+
+.search-button img{
+  width: 27px;
 }
