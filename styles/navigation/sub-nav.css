@@ -44,12 +44,14 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: black;
+  /* background-color: black; */
+  background-color: pink;
   height: 100%;
   visibility: hidden;
 }
 
 .main-mobile-nav-sub{
+ position: relative;
  display: flex;
  align-items: center;
  justify-content: space-between;
@@ -65,6 +67,7 @@
 
 .mobile-nav-left h1{
   font-size: clamp(18px, 2vw, 20px);
+  color: white;
 }
 
 .mobile-right{
@@ -76,7 +79,7 @@
 }
 
 .mobile-right img{
-  width: clamp(18px, 2vw, 20px);
+  width: clamp(18px, 3vw, 50px);
 } 
 
 .mobile-right img:hover{
@@ -84,11 +87,11 @@
 }
 
 .mobile-searchbar-main{
- position: relative;
  display: flex;
  flex: 1;
  align-items: center;
  height: clamp(40px, 1vw, 30px);
+ margin-top: -6px;
 }
 
 .mobile-search-bar{
@@ -216,4 +219,5 @@
  color: white;
  font-size: clamp(15px, 2vw, 18px);
  font-weight: 500;
+ cursor: pointer;
 }

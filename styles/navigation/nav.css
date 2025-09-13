@@ -1,6 +1,7 @@
 body {
   font-family: Roboto, arial;
   margin: 0;
+  overflow: hidden;
 }
 
 .top-nav {
@@ -11,6 +12,7 @@ body {
  justify-content: flex-end;
  font-size: 15px;
  white-space: nowrap;
+ visibility: visible;
 }
 
 .top-nav-items{
@@ -31,6 +33,7 @@ body {
   height: 50px;
   align-items: center;
   justify-content: center;
+  visibility: visible;
 }
 
 .left{
@@ -150,6 +153,7 @@ body {
  align-items: center;
  justify-content: space-between;
  background-color: black;
+ visibility: visible;
 }
 
 .bottom-sub{

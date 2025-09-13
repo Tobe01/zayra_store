@@ -1,18 +1,20 @@
 export function Navigation(){
   const mainNav = document.querySelector('.js-header-nav')
-  .innerHTML += ` <div class="centralSearch js-main-search2">
-                    <div class="centralSearch-container">
-                     <div class="inputField">
-                        <input class="CentralSearch-input" type="search" placeholder="Search for products, brands, or categories">
-                        <button class="centralSearchButton"><img src="images/icons/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
-                      </div>
-                      <button class="centralSearchButton2">
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                  <div class="main-mobile-nav js-main-mobile-nav">
+  .innerHTML += `<div class="main-mobile-nav js-main-mobile-nav">
                     <div class="main-mobile-nav-sub">
+
+                        <div class="centralSearch js-centralSearch">
+                        <div class="centralSearch-container">
+                        <div class="inputField">
+                            <input class="CentralSearch-input" type="search" placeholder="Search for products, brands, or categories">
+                            <button class="centralSearchButton"><img src="images/icons/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
+                          </div>
+                          <button class="centralSearchButton2 js-searchButton">
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+
                       <div class="mobile-nav-left">
                         <!-- From Uiverse.io by JulanDeAlb --> 
                           <label class="hamburger">
@@ -26,9 +28,9 @@ export function Navigation(){
                       </div>
 
                       <div class="mobile-right">
-                      <a><img src="images/icons/person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></a>
-                      <a><img src="images/icons/favorite_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></a>
-                      <a><img src="images/icons/local_mall_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></a>
+                        <a><img src="images/icons/person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></a>
+                        <a><img src="images/icons/favorite_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></a>
+                        <a><img src="images/icons/local_mall_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></a>
                       </div>
                     </div>
 
@@ -37,12 +39,12 @@ export function Navigation(){
                         <button class="first-button">
                           <img src="images/icons/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="search icon">
                         </button>
-                        <input class="mobile-input" placeholder="Search for products, brands, or categories">
+                        <input class="mobile-input js-camera-Search" placeholder="Search for products, brands, or categories">
                         <button class="second-button"><img src="images/icons/photo_camera_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
                       </div>
                     </div>
                 </div>
-        <div class="top-nav">
+        <div class="top-nav js-navigation">
           <div class="top-nav-items">
             <a>
               <span><p>Contact & FAQs</p></span>
@@ -65,7 +67,7 @@ export function Navigation(){
           </div>
         </div>
         
-        <div class="middle-nav">
+        <div class="middle-nav js-navigation">
           <div class="left js-left-items">
               <span><h1>ZAYRA STORE</h1></span>
               <a><p>WOMEN</p></a>
@@ -92,7 +94,7 @@ export function Navigation(){
           </div>
         </div>
         
-        <div class="bottom-nav">
+        <div class="bottom-nav js-navigation">
           <div class="bottom-sub">
               <div>
                 <p>NEW IN</p>
@@ -164,42 +166,73 @@ export function Navigation(){
           })
 
           window.addEventListener('resize', ()=>{
+            const mainSearch = document.querySelector('.js-main-search');
+            const sections = document.querySelectorAll('.js-navigation');
             const mobileNav = document.querySelector('.js-main-mobile-nav');
-            const centralMobile = document.querySelector('.js-main-search2');
-            const centralView = getComputedStyle(centralMobile).visibility;
-            const currentView = getComputedStyle(mobileNav).visibility; 
+            const central = document.querySelector('.js-centralSearch');
+            const centralVisibility = getComputedStyle(central).visibility;
+            const currentView = getComputedStyle(mobileNav).visibility;
+            const currentVisibility = getComputedStyle(mainSearch).visibility;
+            const sectionsVisibility = getComputedStyle(sections[0]).visibility; 
             const width = window.innerWidth;  
-                     
-            if((width <= 1070 && currentView === "hidden") || (width <= 1070 && centralView === "hidden")){
+
+            if((width <= 1070 && currentView === "hidden") || (width <= 1070 && centralView === "hidden" && sectionsVisibility === "visible" && currentVisibility === "visible" && centralVisibility === "visible")){
                 mobileNav.style.visibility = "visible";
-                centralMobile.style.visibility = "visible";
-              } else if (width >= 1070) {
+                central.style.visibility = "hidden";
+                sections.forEach(section => section.style.visibility = "hidden");
+              } else if (width >= 1070 && centralVisibility === "visible") {
                 mobileNav.style.visibility = "hidden";
-                centralMobile.style.visibility = "visible";
+                central.style.visibility = "visible";
+                sections.forEach(section => section.style.visibility = "visible");
               }
             })
 
 
             // Scripts for Main Search on mobile devices
 
-           
-            const mainMobileInput = document.querySelector('.js-main-search2');
-            const mainMobileSearch = document.querySelector('.js-mobile-input');
-
-            mainMobileSearch.addEventListener('click', ()=>{
-              const inputVisibility = getComputedStyle(mainMobileInput).visibility;
-              const searchVisibility = getComputedStyle(mainMobileSearch).visibility;
-
-              if(inputVisibility === "hidden" && searchVisibility === "visible"){
-                mainMobileInput.style.visibility = "visible";
-                mainMobileSearch.style.visibility = "hidden";
-              } else {
-                mainMobileInput.style.visibility = "hidden";
-                mainMobileSearch.style.visibility = "visible";
-              }
-            })
-
+            const cameraSearch = document.querySelector('.js-camera-Search');
             
+            cameraSearch.addEventListener('click', ()=> {
+                const sections = document.querySelectorAll('.js-navigation');
+                const central = document.querySelector('.js-centralSearch');
+                const mobileNav = document.querySelector('.js-main-mobile-nav');
+                const centralVisibility = getComputedStyle(central).visibility;
+                const currentView = getComputedStyle(mobileNav).visibility;
+                const sectionsVisibility = getComputedStyle(sections[0]).visibility; 
+
+                if(centralVisibility === "hidden" && currentView === "visible" && sectionsVisibility === "visible"){
+                  central.style.visibility = "visible";
+                  mobileNav.style.visibility = "hidden";
+                  sections.forEach(section => section.style.visibility = "hidden");
+                } else{
+                  central.style.visibility = "hidden";
+                  mobileNav.style.visibility = "visible";
+                  sections.forEach(section => section.style.visibility = "visible");
+                }
+              });
+
+
+            const cancelButton = document.querySelector('.js-searchButton');
+
+            cancelButton.addEventListener('click', ()=>{
+              const mobileNav = document.querySelector('.js-main-mobile-nav');
+              const sections = document.querySelectorAll('.js-navigation');
+              const central = document.querySelector('.js-centralSearch');
+              const centralVisibility = getComputedStyle(central).visibility;
+              const currentView = getComputedStyle(mobileNav).visibility;
+              const sectionsVisibility = getComputedStyle(sections[0]).visibility; 
+
+              if(centralVisibility === "visible" && sectionsVisibility === "hidden" && currentView === "hidden"){
+                central.style.visibility = "hidden";
+                mobileNav.style.visibility = "visible";
+                sections.forEach(section => section.style.visibility = "visible");
+              } else {
+                central.style.visibility = "visible";
+                mobileNav.style.visibility = "hidden";
+                sections.forEach(section => section.style.visibility = "hidden");
+              }
+            }) 
+
 
 }; Navigation();
 
