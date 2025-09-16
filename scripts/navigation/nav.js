@@ -4,14 +4,14 @@ export function Navigation(){
                     <div class="main-mobile-nav-sub">
 
                         <div class="centralSearch js-centralSearch">
-                        <div class="centralSearch-container">
-                        <div class="inputField">
-                            <input class="CentralSearch-input" type="search" placeholder="Search for products, brands, or categories">
-                            <button class="centralSearchButton"><img src="images/icons/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
-                          </div>
-                          <button class="centralSearchButton2 js-searchButton">
-                            Cancel
-                          </button>
+                          <div class="centralSearch-container">
+                          <div class="inputField">
+                              <input class="CentralSearch-input" type="search" placeholder="Search for products, brands, or categories">
+                              <button class="centralSearchButton"><img src="images/icons/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
+                            </div>
+                            <button class="centralSearchButton2 js-searchButton">
+                              Cancel
+                            </button>
                         </div>
                       </div>
 
@@ -133,6 +133,20 @@ export function Navigation(){
               <button class="search-button"><img src="images/icons/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
             </div>
           </div>
+
+              <div class="intervalContainer">
+                <div class="interval-sub-container">
+                  <div class="firstInterval js-firstInterval">
+                    <a>FAST SHIPPING</a>
+                    <a>FAST DELIVERY</a>
+                    <a>FREE RETURN</a>
+                  </div>
+
+                  <div class="secondInterval js-secondInterval">
+                    <a>REFRESH, REVIVE, RECIRCULATE: RE-ZAY &copy;</a>
+                  </div>
+                </div>
+              </div>
           `
 
           const searchBar = document.querySelector('.js-search-input');
@@ -166,26 +180,51 @@ export function Navigation(){
           })
 
           window.addEventListener('resize', ()=>{
-            const mainSearch = document.querySelector('.js-main-search');
-            const sections = document.querySelectorAll('.js-navigation');
             const mobileNav = document.querySelector('.js-main-mobile-nav');
-            const central = document.querySelector('.js-centralSearch');
-            const centralVisibility = getComputedStyle(central).visibility;
+            const mainSearch = document.querySelector('.js-main-search');
+            // scripts for nav bar that appears after clicking the landing page nav
+            const mainSearchVisibility = getComputedStyle(mainSearch).visibility;
+            // const centralVisibility = getComputedStyle(central).visibility;
             const currentView = getComputedStyle(mobileNav).visibility;
-            const currentVisibility = getComputedStyle(mainSearch).visibility;
-            const sectionsVisibility = getComputedStyle(sections[0]).visibility; 
+            // const sectionsVisibility = getComputedStyle(sections[0]).visibility; 
             const width = window.innerWidth;  
 
-            if((width <= 1070 && currentView === "hidden") || (width <= 1070 && centralView === "hidden" && sectionsVisibility === "visible" && currentVisibility === "visible" && centralVisibility === "visible")){
+            if((width <= 1070 && currentView === "hidden") || (width <= 1070 && centralView === "hidden") || (width <= 1070 && mainSearchVisibility === "visible")){
                 mobileNav.style.visibility = "visible";
-                central.style.visibility = "hidden";
-                sections.forEach(section => section.style.visibility = "hidden");
-              } else if (width >= 1070 && centralVisibility === "visible") {
+                mainSearch.style.visibility = "hidden";
+                // central.style.visibility = "hidden";
+                // sections.forEach(section => section.style.visibility = "hidden");
+              } else if (width >= 1070) {
                 mobileNav.style.visibility = "hidden";
-                central.style.visibility = "visible";
-                sections.forEach(section => section.style.visibility = "visible");
+                mainSearch.style.visibility = "hidden";
+                // central.style.visibility = "visible";
+                // sections.forEach(section => section.style.visibility = "visible");
               }
             })
+
+            // window.addEventListener('resize', ()=>{
+            //   const mobileNav = document.querySelector('.js-main-mobile-nav');
+            //   // scripts for mobile screen nav
+            //   const mobileNavVisibility = getComputedStyle(mobileNav).visibility;
+
+            //   const central = document.querySelector('.js-centralSearch');
+            //   // scripts for search bar onclick mobile screen nav search
+            //   const centralVisibility = getComputedStyle(central).visibility;
+
+            //   const searchBar = document.querySelector('.js-search-input');
+            //   // scripts for landing page nav
+            //   const searchBarVisibility = getComputedStyle(searchBar).visibility;
+
+            //   const mainSearch = document.querySelector('.js-main-search');
+            //   // scripts for nav bar that appears after clicking the landing page nav
+            //   const mainSearchVisibility = getComputedStyle(mainSearch).visibility;
+
+            //   const sections = document.querySelectorAll('.js-navigation');
+            //   // scripts for all 3 sections of man nav
+            //   const sectionsVisibility = getComputedStyle(sections[0]).visibility;
+
+            //   const width = window.innerWidth;
+            // })
 
 
             // Scripts for Main Search on mobile devices
@@ -232,6 +271,24 @@ export function Navigation(){
                 sections.forEach(section => section.style.visibility = "hidden");
               }
             }) 
+
+            setInterval(()=>{
+              const firstInterval = document.querySelector('.js-firstInterval');
+              const firstVisibility = getComputedStyle(firstInterval).visibility;
+              const secondInterval = document.querySelector('.js-secondInterval');
+              const secondVisibility = getComputedStyle(secondInterval).visibility;
+
+              if(firstVisibility === "hidden" && secondVisibility === "hidden"){
+               firstInterval.style.visibility = "visible";
+               secondInterval.style.visibility = "hidden";
+              } else if (firstVisibility === "visible" && secondVisibility === "hidden"){
+               firstInterval.style.visibility = "hidden";
+               secondInterval.style.visibility = "visible";
+              } else if (firstVisibility === "hidden" && secondVisibility === "visible"){
+                firstInterval.style.visibility = "visible";
+                secondInterval.style.visibility = "hidden";
+              }
+            }, 4000);
 
 
 }; Navigation();

@@ -1,0 +1,46 @@
+.intervalContainer{
+ background-color: rgb(189, 187, 187);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.interval-sub-container{
+ display: flex;
+ flex-direction: column;
+ flex: 1;
+ align-items: center;
+ justify-content: center;
+}
+
+.interval-sub-container a{
+  font-size: clamp(9px, 3vw, 13px);
+  color: rgb(34, 34, 34);
+  cursor: pointer;
+}
+
+.interval-sub-container a:hover{
+  color: rgb(144, 144, 247);
+}
+
+.firstInterval{
+ display: flex;
+ flex: 1;
+ align-items: center;
+ justify-content: space-between;
+ width: 350px;
+ position: relative;
+ visibility: hidden;
+ transition: 3ms ease;
+}
+
+.secondInterval{
+ display: flex;
+ flex: 1;
+ align-items: center;
+ justify-content: space-around;
+ width: 350px;
+ position: absolute;
+ visibility: hidden;
+ transition: 3ms ease;
+}
