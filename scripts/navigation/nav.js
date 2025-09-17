@@ -274,19 +274,29 @@ export function Navigation(){
 
             setInterval(()=>{
               const firstInterval = document.querySelector('.js-firstInterval');
-              const firstVisibility = getComputedStyle(firstInterval).visibility;
               const secondInterval = document.querySelector('.js-secondInterval');
+
+              const firstVisibility = getComputedStyle(firstInterval).visibility;
               const secondVisibility = getComputedStyle(secondInterval).visibility;
 
-              if(firstVisibility === "hidden" && secondVisibility === "hidden"){
+              const firstOpacity = getComputedStyle(firstInterval).opacity;
+              const secondOpacity = getComputedStyle(secondInterval).opacity;
+
+              if((firstVisibility === "hidden" && secondVisibility === "hidden") || (firstOpacity === 0 && secondOpacity === 0)){
                firstInterval.style.visibility = "visible";
                secondInterval.style.visibility = "hidden";
-              } else if (firstVisibility === "visible" && secondVisibility === "hidden"){
+               firstInterval.style.opacity = 1;
+               secondInterval.style.opacity = 0;
+              } else if ((firstVisibility === "visible" && secondVisibility === "hidden") || (firstOpacity === 1 && secondOpacity === 0)){
                firstInterval.style.visibility = "hidden";
                secondInterval.style.visibility = "visible";
-              } else if (firstVisibility === "hidden" && secondVisibility === "visible"){
+               firstInterval.style.opacity = 0;
+               secondInterval.style.opacity = 1;
+              } else if ((firstVisibility === "hidden" && secondVisibility === "visible") || (firstOpacity === 0 && secondOpacity === 1)){
                 firstInterval.style.visibility = "visible";
                 secondInterval.style.visibility = "hidden";
+                firstInterval.style.opacity = 1;
+                secondInterval.style.opacity = 0;
               }
             }, 4000);
 

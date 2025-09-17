@@ -1,7 +1,7 @@
 body {
   font-family: Roboto, arial;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .top-nav {

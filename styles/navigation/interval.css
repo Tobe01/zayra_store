@@ -1,8 +1,9 @@
 .intervalContainer{
- background-color: rgb(189, 187, 187);
+ background-color: rgb(230, 224, 224);
  display: flex;
  align-items: center;
  justify-content: center;
+ height: clamp(30px, 3vw, 40px);
 }
 
 .interval-sub-container{
@@ -31,7 +32,8 @@
  width: 350px;
  position: relative;
  visibility: hidden;
- transition: 3ms ease;
+ opacity: 0;
+ transition: opacity 0.9s ease-out;
 }
 
 .secondInterval{
@@ -41,6 +43,9 @@
  justify-content: space-around;
  width: 350px;
  position: absolute;
+ opacity: 0;
  visibility: hidden;
- transition: 3ms ease;
+ transition: opacity 0.9s ease-out;
 }
+
+
