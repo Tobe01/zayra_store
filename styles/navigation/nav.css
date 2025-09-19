@@ -196,11 +196,11 @@ body {
 
 .main-search{
  position: absolute;
- visibility: hidden;
+ /* visibility: hidden; */
  top: 30px;
  left: 0;
  right: 0;
- bottom: 0;
+ bottom: 40px;
  background-color: black;
  display: flex;
  justify-content: center;
@@ -212,6 +212,7 @@ body {
  flex: 1;
  align-items: center;
  justify-content: center;
+ margin-top: -35px;
 }
 
 .close-button{
@@ -230,7 +231,7 @@ body {
  max-width: 550px;
  height: 38px;
  border: none;
- padding: 7px 0 7px 10px;
+ padding: 22px 0 22px 10px;
  border-top-left-radius: 1px;
  border-bottom-left-radius: 1px;
 }
@@ -247,7 +248,7 @@ body {
 .search-button{
  border: none;
  background-color: grey;
- padding: 4px 9px;
+ padding: 7px 9px;
  border-top-right-radius: 3px;
  border-bottom-right-radius: 3px;
  cursor: pointer;
